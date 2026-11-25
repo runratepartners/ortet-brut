@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORTET BRUT x RunRate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;500;700&family=Inter+Tight:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: Danny talking to Hamza's partners. Calm, sure, no hype. Gallery quiet.
+IDEA: a gallery exhibition card / catalogue sheet for ORTET BRUT, on raw concrete.
+PICTURE: the build-to-launch path drawn as a palm-shadowed track of date marks, setup to launch.
+COLOUR and TYPE: the brand's own: concrete sand, date brown, palm olive, ink. Tall serif + Public Sans, as in the deck.
+LAYOUT: hero with the path, then two phases side by side, a timeline, what we need, next step.
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#ebe4d6,#1b1815);--bg2:light-dark(#e1d8c6,#24201c);--paper:light-dark(#f6f1e7,#2b2621);
+--ink:light-dark(#231f1a,#efe7d9);--soft:light-dark(#5e554a,#b8ad9c);--line:light-dark(#cfc4b0,#3d362f);
+--date:light-dark(#5a2e1c,#c98a63);--palm:light-dark(#4f5530,#9da474)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Public Sans",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.05;margin:0;text-wrap:balance}
+h1{font-size:clamp(40px,6vw,64px)}h2{font-size:clamp(32px,4vw,46px)}h3{font-size:28px}
+p{margin:.6em 0;max-width:62ch}
+.band{padding:clamp(28px,5vw,72px) max(5vw,16px)}
+.wrap{max-width:1180px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--soft)}
+.mark{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:15px;letter-spacing:.2em}
+.mark svg{width:22px;height:28px}
+.hero{background:var(--bg2);position:relative;overflow:hidden}
+.hero .shadow{position:absolute;inset:0;opacity:.13;pointer-events:none}
+.hero .wrap{position:relative}
+.lede{font-size:19px;color:var(--soft);max-width:54ch}
+.fig{position:relative;min-height:250px;margin-top:28px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+.legend{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:8px}
+.legend div{font-size:14px;color:var(--soft)}.legend b{display:block;color:var(--ink);font-size:15px}
+.heard{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,64px);align-items:start}
+.heard ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.heard li{padding:14px 0;border-bottom:1px solid var(--line)}
+.phases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:28px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:clamp(22px,3vw,36px);display:flex;flex-direction:column}
+.tag{font-size:14px;color:var(--soft)}
+.price{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(34px,4vw,44px);white-space:nowrap;margin:14px 0 2px;color:var(--date)}
+.price.p2{color:var(--palm)}
+.price small{font-family:"Public Sans",sans-serif;font-size:14px;color:var(--soft)}
+.card ul{margin:18px 0 0;padding:0;list-style:none}
+.card li{padding:10px 0 10px 26px;border-top:1px solid var(--line);position:relative}
+.card li::before{content:"";position:absolute;left:2px;top:17px;width:9px;height:12px;border-radius:50%;background:currentColor;opacity:.55}
+.card.one li::before{background:var(--date);opacity:1}.card.two li::before{background:var(--palm);opacity:1}
+.own{margin-top:22px;background:var(--ink);color:var(--bg);padding:20px clamp(20px,3vw,32px);border-radius:4px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.own h3{font-size:26px}.own p{margin:0;color:inherit;opacity:.8}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:28px;border-top:2px solid var(--ink)}
+.steps div{padding:18px 18px 18px 0}
+.steps .when{font-family:"Instrument Serif",Georgia,serif;font-size:26px;line-height:1.1}
+.steps p{font-size:15px;color:var(--soft);margin:.4em 0 0}
+.need{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:24px}
+.need div{border-top:1px solid var(--line);padding-top:14px}
+.need b{display:block;margin-bottom:4px}
+.need p{font-size:15px;color:var(--soft);margin:0}
+.next{background:var(--date);color:#f6f1e7}
+.next .wrap{display:flex;justify-content:space-between;gap:28px;align-items:end;flex-wrap:wrap}
+.next p{color:#f6f1e7;opacity:.85}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border:1px solid #f6f1e7;color:#f6f1e7;text-decoration:none;border-radius:2px;font-weight:500}
+.btn:focus-visible{outline:2px solid #f6f1e7;outline-offset:3px}
+.contact{font-size:15px;margin-top:10px;opacity:.85}
+footer{font-size:13px;color:var(--soft)}
+/* the homepage, full screen: Blank Street's structure, ORTET BRUT's world */
+.dark{background:var(--ink);color:var(--bg);--soft:light-dark(#b8ad9c,#5e554a);--line:light-dark(#4a423a,#cfc4b0)}
+.dark h2,.dark .why b{color:var(--bg)}
+.peek{display:block;position:relative;width:100%;margin-top:28px;padding:0;border:0;border-radius:10px;overflow:hidden;cursor:pointer;background:#2a1a10;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.peek img{display:block;width:100%;height:auto;aspect-ratio:1280/720;object-fit:cover;transition:transform .6s}
+.peek:hover img{transform:scale(1.02)}
+.peek span{position:absolute;right:16px;bottom:16px;background:#fffdfc;color:#111;font:800 15px "Inter Tight",sans-serif;padding:13px 20px;border-radius:999px}
+.peek:focus-visible{outline:3px solid #fffdfc;outline-offset:3px}
+#site{background:#fffdfc;color:#111;font-family:"Inter Tight","Public Sans",sans-serif}
+#site button{font-family:inherit;cursor:pointer}
+.s-nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;color:#fffdfc;transition:background .25s,color .25s}
+.s-nav.solid{background:#fffdfc;color:#111}
+.s-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:14px;letter-spacing:.24em;white-space:nowrap}
+.s-brand img{height:30px;width:auto;display:block}
+.s-brand .dk,.s-nav.solid .s-brand .lt{display:none}.s-nav.solid .s-brand .dk{display:block}
+.s-nav nav{display:flex;gap:6px}
+.s-nav nav button{background:none;border:0;color:inherit;font-weight:700;font-size:14px;min-height:44px;padding:0 10px}
+.s-nav button:focus-visible,.s-link:focus-visible,.s-pause:focus-visible,.s-back:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.s-hero{position:relative;height:100vh;height:100svh;min-height:520px;max-height:1100px;overflow:hidden;background:#3a2417 url(img/hero0.jpg) 72% center/cover}
+.s-hero .f{position:absolute;inset:0;background-size:cover;opacity:0;animation:sfade 24s linear infinite}
+.s-hero .f1{background-image:url(img/hero0.jpg);background-position:72% center}
+.s-hero .f2{background-image:url(img/hero3.jpg);background-position:74% center;animation-delay:8s}
+.s-hero .f3{background-image:url(img/hero1.jpg);background-position:76% center;animation-delay:16s}
+@keyframes sfade{0%{opacity:0;transform:scale(1.01)}5%{opacity:1}33.3%{opacity:1}39%{opacity:0;transform:scale(1.07)}100%{opacity:0;transform:scale(1.07)}}
+.s-hero.paused .f{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.s-hero .f{animation:none}}
+.s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(20deg,rgba(15,10,6,.6),rgba(15,10,6,0) 45%),linear-gradient(180deg,rgba(15,10,6,.3),rgba(15,10,6,0) 18%)}
+.s-hero .cap{position:absolute;left:16px;bottom:22px;z-index:2;color:#fffdfc;max-width:250px}
+.s-hero h3{font:800 36px/1.05 "Inter Tight",sans-serif;color:#fffdfc;letter-spacing:-.01em}
+.s-hero p{font-size:14px;line-height:1.35;margin:8px 0 2px;color:#fffdfc}
+.s-link{background:none;border:0;padding:0 0 1px;color:inherit;font-weight:800;font-size:14px;border-bottom:1.5px solid currentColor;margin-top:8px;min-height:28px}
+.s-pause{position:absolute;right:10px;bottom:14px;z-index:2;width:44px;height:44px;background:none;border:0;color:#fffdfc;font-size:15px;letter-spacing:2px}
+.s-g{display:grid;gap:6px;margin-top:6px}
+.s-g3{grid-template-columns:repeat(3,minmax(0,1fr))}.s-g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.s-g4{grid-template-columns:repeat(4,minmax(0,1fr));padding:0 6px}
+.s-t{position:relative;overflow:hidden;background:#7a4a2e}
+.s-t>img{width:100%;height:100%;object-fit:cover;display:block}
+.s-g3 .s-t{aspect-ratio:5/6}.s-g3 .s-t>img{object-position:center bottom}
+.s-g2 .s-t{aspect-ratio:1/1.04}
+.s-t.shade::after{content:"";position:absolute;inset:0;background:linear-gradient(15deg,rgba(15,10,6,.55),rgba(15,10,6,0) 42%)}
+.s-t .cap{position:absolute;left:16px;bottom:18px;z-index:1;color:#fffdfc}
+.s-t .cap b{font:800 20px/1.1 "Inter Tight",sans-serif;display:block}
+.s-p{position:relative;background:#f1f0ee;aspect-ratio:3/4;display:grid;place-items:center}
+.s-p img{max-width:60%;max-height:58%;filter:drop-shadow(0 16px 12px rgba(40,25,10,.22))}
+.s-p .soon{position:absolute;top:12px;right:12px;background:#fffdfc;font-size:12px;padding:4px 9px;border-radius:3px}
+.s-p .nm{position:absolute;left:14px;bottom:12px;font-size:13px;font-weight:700}
+.s-foot{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.9fr);gap:28px;padding:28px 16px 90px;font-size:13px}
+.s-foot h4{margin:0 0 12px;font:800 17px "Inter Tight",sans-serif}
+.s-form .row{display:flex;align-items:center;border-bottom:1px solid #111;max-width:420px}
+.s-form input{flex:1;border:0;background:transparent;min-height:44px;font:16px "Inter Tight",sans-serif;color:#111;padding:0}
+.s-form select{margin-top:10px;border:0;border-bottom:1px solid #c9c4bc;background:transparent;min-height:40px;font:14px "Inter Tight",sans-serif;color:#111;width:100%;max-width:420px}
+.s-form .row button{border:0;background:none;font-size:20px;min-width:44px;min-height:44px;color:#111}
+.s-form input:focus-visible,.s-form select:focus-visible{outline:2px solid #111;outline-offset:2px}
+.s-fine{color:#73736e;font-size:12px;margin:8px 0 0;max-width:42ch}
+.s-done b{font:800 20px "Inter Tight",sans-serif;display:block}
+.s-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.s-cols b{display:block;margin-bottom:10px;font-weight:800;font-size:14px}
+.s-cols span{display:block;margin-bottom:7px}
+.s-copy{grid-column:1/-1;color:#73736e;font-size:12px}
+.s-draft{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:25;background:rgba(17,17,17,.72);color:#fffdfc;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap;pointer-events:none}
+.draft{display:inline-block;background:var(--bg);color:var(--ink);font:700 13px "Public Sans",sans-serif;padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.s-back{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:30;background:#111;color:#fffdfc;border:0;border-radius:999px;min-height:44px;padding:0 18px;font-weight:700;font-size:13px;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+@media(max-width:860px){.s-g4{grid-template-columns:repeat(2,minmax(0,1fr))}.s-foot{grid-template-columns:minmax(0,1fr)}.s-nav nav .x{display:none}}
+@media(max-width:600px){.s-back{left:auto;right:12px;bottom:auto;top:60px;transform:none;min-height:40px;padding:0 14px}.s-g3,.s-g2{grid-template-columns:minmax(0,1fr)}.s-brand span{display:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.note{font-size:13px;color:var(--soft);margin-top:12px}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:22px}
+.why div{border-top:1px solid var(--line);padding-top:12px;font-size:15px;color:var(--soft)}
+.why b{display:block;color:var(--ink)}
+@media(max-width:860px){.works{grid-template-columns:repeat(2,minmax(0,1fr))}.m-join{grid-template-columns:minmax(0,1fr)}.m-nav nav{display:none}.why{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:860px){.heard,.phases{grid-template-columns:minmax(0,1fr)}.need{grid-template-columns:minmax(0,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.legend{grid-template-columns:repeat(2,minmax(0,1fr))}.fig{min-height:190px}.steps{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:no-preference){.dot{animation:rise .9s ease-out both}}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="proposal">
+
+<section class="band hero">
+  <svg class="shadow" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round">
+      <path id="frond" d="M1220 -40 C1010 120 900 230 760 420"/>
+      <g id="leaves"></g>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="top">
+      <div class="mark"><svg viewBox="0 0 22 28" aria-hidden="true"><ellipse cx="11" cy="14" rx="10" ry="13" fill="var(--date)"/><path d="M11 3v22M6 6c3 5 3 11 0 17M16 6c-3 5-3 11 0 17" stroke="var(--bg2)" stroke-width="1.3" fill="none"/></svg>ORTET BRUT 1927</div>
+      <div>Prepared by RunRate Partners for Hamza and the partners</div>
+    </div>
+    <h1 style="margin-top:48px">Build the list while<br>the trailer gets built.</h1>
+    <p class="lede">The trailer takes about five months. That's five months to get the site up, start collecting the people who want in, and walk into launch with a crowd already waiting. Here's how we'd do it.</p>
+    <div class="fig"><svg id="path" role="img" aria-label="Path from setup through the trailer build to launch and retail"></svg></div>
+    <div class="legend">
+      <div><b>Setup</b>About 30 days</div>
+      <div><b>Trailer build</b>Site live, list growing</div>
+      <div><b>Launch</b>Private event for the list</div>
+      <div><b>Retail</b>Shop opens on the same store</div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap heard">
+    <div>
+      <h2>What we heard</h2>
+      <p style="color:var(--soft)">From our call on Nov 23. Correct us anywhere we're off.</p>
+    </div>
+    <ul>
+      <li><b>Mobile cafe first.</b> A custom trailer, a tight menu, events and pop-ups before any retail shelf.</li>
+      <li><b>Retail comes after.</b> IMPASTO 01 leads, demoed in the drinks so people take it home.</li>
+      <li><b>The site's job right now</b> is attention and signups, not orders. Think fashion magazine, not menu board.</li>
+      <li><b>Everything in one place.</b> Shopify at the trailer and on the site, one set of numbers.</li>
+      <li><b>Spend smart.</b> Grow off events and community, not a launch party that never pays back.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band dark">
+  <div class="wrap">
+    <span class="draft">Rough first draft</span>
+    <h2>A first look at the homepage</h2>
+    <p style="color:var(--soft)">Laid out the way Blank Street does it, built around your products: a film up top, drinks on flat color, the works alone on plain tiles. Nothing's for sale yet, so every path leads to the list.</p>
+
+    <button class="peek" id="peek" aria-label="Open the full homepage mockup"><img src="img/preview.jpg" alt="The ORTET BRUT homepage mockup"><span>Open the full homepage →</span></button>
+    <p class="note">This is a rough first draft to show direction, not the finished site. The images are placeholders: the drinks, scenes and people are concept shots, not the real menu, trailer or cast, and the real build uses your own photography. The four product shots are from your deck. The signup form works but doesn't send anywhere.</p>
+
+    <div class="why">
+      <div><b>One job per page</b>Every button goes to the list. No dead ends while there's nothing to buy.</div>
+      <div><b>We know where they came from</b>That "where'd you find us" answer lands in the CRM, so we know which events and posts actually pay off.</div>
+      <div><b>The shop slots in later</b>When the products are ready, the "Join" buttons become "Shop." Same site, same Shopify.</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="background:var(--bg2)">
+  <div class="wrap">
+    <h2>Two parts. Start with the first.</h2>
+    <p style="color:var(--soft)">The build is a one-time project. Running it with you is optional and monthly. You can do one without the other.</p>
+    <div class="phases">
+      <div class="card one">
+        <div class="tag">Part one</div>
+        <h3>The build</h3>
+        <div class="price">$3,000 <small>one time</small></div>
+        <ul>
+          <li>The site in the ORTET BRUT look: home, the works, the 1927 story, events, and a join page</li>
+          <li>Edition 001 waitlist and private launch invite as the main call to action</li>
+          <li>Every signup lands in a CRM, tagged by where it came from: site, event, Instagram</li>
+          <li>Newsletter set up with a welcome email and the launch invite ready to go</li>
+          <li>Built on Shopify, so the trailer terminals, the site and the future shop run off one account</li>
+          <li>Hooked up to the domain you already own</li>
+        </ul>
+      </div>
+      <div class="card two">
+        <div class="tag">Part two</div>
+        <h3>Running it with you</h3>
+        <div class="price p2">Monthly <small>scoped on our next call</small></div>
+        <ul>
+          <li>Weekly KPI report: signups, where they come from, site traffic, search, and sales once you're selling</li>
+          <li>Your own HQ: one login with your numbers, tasks, products and inventory</li>
+          <li>Newsletter on a rhythm: where the trailer is, drops, early access for the list</li>
+          <li>A signup setup for every pop-up so no event ends without names</li>
+          <li>Site changes as the brand grows. No capped edits.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="own">
+      <h3>You own all of it.</h3>
+      <p>The site, the store, the list. It's your asset. If you ever want to run it yourselves, we hand it over.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>How it rolls out</h2>
+    <div class="steps">
+      <div><div class="when">Early Dec</div><p>Kickoff. We pull in your designer's mood board and files.</p></div>
+      <div><div class="when">Through Dec</div><p>About 30 days of setup and build. You review as we go.</p></div>
+      <div><div class="when">Your call</div><p>Site goes live when you say. It can sit ready until the menu's set.</p></div>
+      <div><div class="when">Trailer done</div><p>Private launch for the list. Then the shop switches on.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="background:var(--bg2)">
+  <div class="wrap">
+    <h2>What we'll need from you</h2>
+    <div class="need">
+      <div><b>Brand files</b><p>Logo, mood board and materials from your designer when they're ready.</p></div>
+      <div><b>Product images</b><p>Renders or photos of the works. The whole site lives on these.</p></div>
+      <div><b>A few answers</b><p>Where products get made, whether you'll ship out of state, and the launch window after Dubai.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band next">
+  <div class="wrap">
+    <div>
+      <h2>Next step</h2>
+      <p>A quick call with you and the partners, end of this week or next. We'll walk through this, lock the monthly piece, and pick a start date.</p>
+    </div>
+    <div>
+      <a class="btn" href="mailto:danny@runratepartners.co">Email Danny</a>
+      <div class="contact">danny@runratepartners.co</div>
+    </div>
+  </div>
+</section>
+
+<footer class="band" style="padding-block:20px"><div class="wrap">RunRate Partners · Prepared November 2026 · ORTET BRUT name and marks belong to ORTET BRUT</div></footer>
+
+</div>
+
+<div id="site" hidden>
+  <header class="s-nav" id="s-nav">
+    <div class="s-brand"><img class="lt" src="img/mark-light.png" alt=""><img class="dk" src="img/mark-dark.png" alt=""><span>ORTET BRUT</span></div>
+    <nav><button class="x" data-go="s-works">Works</button><button class="x" data-go="s-ed">Editions</button><button class="x" data-go="s-trailer">Trailer</button><button data-go="s-foot">Join</button></nav>
+  </header>
+  <section class="s-hero" id="s-hero">
+    <div class="f f1"></div><div class="f f2"></div><div class="f f3"></div>
+    <div class="cap">
+      <h3>Edition 001</h3>
+      <p>The date, as a creative medium. Raw, reduced to its essential form. The trailer's being built now.</p>
+      <button class="s-link" data-go="s-foot">Join the list</button>
+    </div>
+    <button class="s-pause" id="s-pause" aria-label="Pause the film">❙❙</button>
+  </section>
+  <div class="s-g s-g3">
+    <div class="s-t"><img src="img/drink0.jpg" alt="Iced date latte beside three Medjool dates"></div>
+    <div class="s-t"><img src="img/drink1.jpg" alt="Iced matcha layered over date caramel"></div>
+    <div class="s-t"><img src="img/drink2.jpg" alt="Date shake beside the IMPASTO tube"></div>
+  </div>
+  <div class="s-g s-g2" id="s-ed">
+    <div class="s-t shade"><img src="img/ed-cup.jpg" alt="A woman holding a BISQUE cup"><div class="cap"><b>BISQUE 01 &amp; 02</b><button class="s-link" data-go="s-works">Learn more</button></div></div>
+    <div class="s-t shade"><img src="img/ed-bag.jpg" alt="An Artist Edition bag carried past a clay wall"><div class="cap"><b>Artist Editions</b><button class="s-link" data-go="s-foot">Get the first drop</button></div></div>
+  </div>
+  <div class="s-g s-g4" id="s-works">
+    <div class="s-p"><img src="img/impasto-cut.png" alt="IMPASTO 01"><span class="soon">Coming soon</span><span class="nm">IMPASTO 01</span></div>
+    <div class="s-p"><img src="img/pallete-cut.png" alt="PALLETE 01"><span class="soon">Coming soon</span><span class="nm">PALLETE 01</span></div>
+    <div class="s-p"><img src="img/bisque-cut.png" alt="BISQUE 01 and 02"><span class="soon">Coming soon</span><span class="nm">BISQUE 01 &amp; 02</span></div>
+    <div class="s-p"><img src="img/tableu-cut.png" alt="TABLEU 001"><span class="soon">Coming soon</span><span class="nm">TABLEU 001</span></div>
+  </div>
+  <div class="s-g s-g2" id="s-trailer">
+    <div class="s-t shade"><img src="img/ed-hatch.jpg" alt="A cup passed through a concrete serving hatch"><div class="cap"><b>Find the trailer</b><button class="s-link" data-go="s-foot">Pop-up dates</button></div></div>
+    <div class="s-t shade"><img src="img/ed-box.jpg" alt="Hands sharing a box of dates"><div class="cap"><b>The list</b><button class="s-link" data-go="s-foot">Get the invite</button></div></div>
+  </div>
+  <footer class="s-foot" id="s-foot">
+    <div>
+      <h4>Join the list</h4>
+      <form class="s-form" id="sform" novalidate>
+        <div class="row"><label for="s-email" class="sr">Email address</label><input id="s-email" type="email" placeholder="Email address" autocomplete="email"><button type="submit" aria-label="Join">→</button></div>
+        <select id="s-src" aria-label="Where'd you find us?"><option>Where'd you find us? An event or pop-up</option><option>Where'd you find us? Instagram</option><option>Where'd you find us? A friend</option><option>Where'd you find us? Somewhere else</option></select>
+      </form>
+      <p class="s-fine">Edition 001, the private launch, and where the trailer pops up next.</p>
+    </div>
+    <div class="s-cols">
+      <div><b>Works</b><span>IMPASTO 01</span><span>PALLETE 01</span><span>BISQUE 01 &amp; 02</span><span>TABLEU 001</span></div>
+      <div><b>House</b><span>The 1927 code</span><span>Artist Editions</span><span>Journal</span><span>Find the trailer</span></div>
+      <div><b>Socials</b><span>Instagram</span><span>TikTok</span></div>
+    </div>
+    <div class="s-copy">ORTET BRUT 1927</div>
+  </footer>
+  <div class="s-draft">Rough draft · placeholder images</div>
+  <button class="s-back" id="s-back">← Back to the proposal</button>
+</div>
+
+<script>
+{
+  const leaves=document.getElementById('leaves');
+  let l='';
+  for(let i=0;i<14;i++){const t=i/13,x=1220-460*t,y=-40+460*t;l+=`<path d="M${x} ${y} q${-90-40*t} ${10+20*t} ${-170-60*t} ${80}"/><path d="M${x} ${y} q${20} ${70+30*t} ${-30} ${150+40*t}"/>`}
+  leaves.innerHTML=l;
+
+  const s=document.getElementById('path');
+  const stops=[{x:.05,label:'Setup'},{x:.35,label:'Trailer build'},{x:.68,label:'Launch'},{x:.94,label:'Retail'}];
+  const draw=()=>{
+    const W=s.clientWidth,H=s.clientHeight,narrow=W<520;
+    const base=H*.72,top=H*.2;
+    const y=t=>base-(base-top)*Math.pow(t,1.6);
+    let d='',dots='';
+    for(let i=0;i<=60;i++){const t=i/60;d+=(i?'L':'M')+(W*.03+W*.94*t).toFixed(1)+' '+y(t).toFixed(1)}
+    const n=narrow?10:18;
+    for(let i=1;i<n;i++){const t=i/n,x=W*.03+W*.94*t,yy=y(t),r=4+5*t;
+      dots+=`<ellipse class="dot" style="animation-delay:${(i*60)}ms" cx="${x.toFixed(1)}" cy="${(yy-14-r).toFixed(1)}" rx="${(r*.75).toFixed(1)}" ry="${r.toFixed(1)}" fill="var(--date)" opacity="${(.35+.6*t).toFixed(2)}"/>`}
+    const marks=stops.map(p=>{const x=W*p.x,yy=y((p.x-.03)/.94);return `<line x1="${x}" x2="${x}" y1="${yy+8}" y2="${H-6}" stroke="var(--line)"/><circle cx="${x}" cy="${yy}" r="6" fill="var(--bg2)" stroke="var(--ink)" stroke-width="2"/>`}).join('');
+    const tbar=`<rect x="${W*.08}" y="${H-28}" width="${W*.56}" height="8" rx="4" fill="var(--palm)" opacity=".8"/><text x="${W*.08}" y="${H-36}" font-size="13" fill="var(--soft)" font-family="Public Sans">${narrow?'~5 months':'Trailer build, about 5 months'}</text>`;
+    const list=narrow?'':`<text x="${W*.62}" y="${top-4}" font-size="13" fill="var(--soft)" font-family="Public Sans">The list, growing</text>`;
+    s.innerHTML=`<path d="${d}" fill="none" stroke="var(--ink)" stroke-width="1.5"/>${dots}${marks}${tbar}${list}`;
+  };
+  const ro=new ResizeObserver(draw);ro.observe(s);
+
+  const prop=document.getElementById('proposal'),site=document.getElementById('site'),nav=document.getElementById('s-nav'),hero=document.getElementById('s-hero');
+  const show=v=>{const on=v==='site';site.hidden=!on;prop.hidden=on;window.scrollTo(0,0);onScroll()};
+  const onScroll=()=>nav.classList.toggle('solid',window.scrollY>hero.offsetHeight-64);
+  const go=v=>{try{location.hash=v==='site'?'site':'proposal'}catch(e){}show(v)};
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('hashchange',()=>show(location.hash==='#site'?'site':'proposal'));
+  document.getElementById('peek').addEventListener('click',()=>go('site'));
+  document.getElementById('s-back').addEventListener('click',()=>go('proposal'));
+  site.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth',block:'start'})});
+  const pz=document.getElementById('s-pause');
+  pz.addEventListener('click',()=>{const p=hero.classList.toggle('paused');pz.textContent=p?'▶':'❙❙';pz.setAttribute('aria-label',p?'Play the film':'Pause the film')});
+  const f=document.getElementById('sform');
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const em=document.getElementById('s-email');
+    if(!/^\S+@\S+\.\S+$/.test(em.value)){em.parentElement.style.borderColor='#b3401f';em.focus();return}
+    const src=document.getElementById('s-src').value.replace("Where'd you find us? ","");
+    const d=document.createElement('div');d.className='s-done';
+    const b=document.createElement('b');b.textContent="You're on the list.";
+    const p=document.createElement('p');p.className='s-fine';
+    p.textContent='Tagged in the CRM as: '+src+'. First email goes out at Edition 001.';
+    d.append(b,p);f.replaceChildren(d);
+  });
+  if(location.hash==='#site')show('site');
+}
+</script>
+</body>
+</html>
