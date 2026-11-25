@@ -132,6 +132,33 @@ footer{font-size:13px;color:var(--soft)}
 .s-back{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:30;background:#111;color:#fffdfc;border:0;border-radius:999px;min-height:44px;padding:0 18px;font-weight:700;font-size:13px;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.35)}
 @media(max-width:860px){.s-g4{grid-template-columns:repeat(2,minmax(0,1fr))}.s-foot{grid-template-columns:minmax(0,1fr)}.s-nav nav .x{display:none}}
 @media(max-width:600px){.s-back{left:auto;right:12px;bottom:auto;top:60px;transform:none;min-height:40px;padding:0 14px}.s-g3,.s-g2{grid-template-columns:minmax(0,1fr)}.s-brand span{display:none}}
+/* market section */
+.mk-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:28px}
+.stat{border-top:2px solid var(--ink);padding-top:14px}
+.stat .n{font:400 clamp(40px,5vw,58px)/1 "Instrument Serif",Georgia,serif;color:var(--date);white-space:nowrap}
+.stat p{font-size:15px;margin:8px 0 6px;color:var(--ink)}
+.src{font-size:12.5px;color:var(--soft)}.src a,.srcs a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.early{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;margin-top:36px;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:clamp(20px,3vw,32px)}
+.dots{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.dots i{aspect-ratio:3/4;border-radius:50%;background:var(--line)}.dots i.on{background:var(--date)}
+.mk h3{margin-top:44px}
+.shelf{width:100%;border-collapse:collapse;margin-top:16px;font-size:15px}
+.shelf th{text-align:left;font-weight:700;font-size:13px;color:var(--soft);padding:8px 12px 8px 0;border-bottom:2px solid var(--ink)}
+.shelf td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.shelf td:first-child{font-weight:700;white-space:nowrap}
+.shelf a{color:inherit;text-underline-offset:2px}
+.gap{margin-top:18px;background:var(--date);color:#f6f1e7;border-radius:4px;padding:18px clamp(18px,3vw,28px);font-size:17px}
+.gap b{font:400 24px "Instrument Serif",Georgia,serif;display:block;margin-bottom:4px}
+.moves{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:18px}
+.moves>div{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:20px}
+.moves>div>b{font:400 23px/1.15 "Instrument Serif",Georgia,serif;display:block;margin-bottom:8px}
+.moves>div>p{font-size:15px;margin:0 0 8px;color:var(--ink)}
+.talk{margin:16px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.talk li{padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;max-width:78ch}
+.srcs{margin-top:24px;font-size:13px;color:var(--soft)}
+.srcs summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.srcs ol{margin:4px 0 0;padding-left:20px;columns:2;column-gap:32px}.srcs li{margin-bottom:6px;break-inside:avoid;overflow-wrap:anywhere}
+@media(max-width:860px){.mk-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.moves{grid-template-columns:minmax(0,1fr)}.early{grid-template-columns:minmax(0,1fr)}.dots{max-width:200px}.srcs ol{columns:1}.shelf td:first-child{white-space:normal}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .note{font-size:13px;color:var(--soft);margin-top:12px}
 .why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:22px}
@@ -184,6 +211,83 @@ footer{font-size:13px;color:var(--soft)}
       <li><b>Everything in one place.</b> Shopify at the trailer and on the site, one set of numbers.</li>
       <li><b>Spend smart.</b> Grow off events and community, not a launch party that never pays back.</li>
     </ul>
+  </div>
+</section>
+
+<section class="band mk" style="background:var(--bg2)">
+  <div class="wrap">
+    <h2>The market's moving your way</h2>
+    <p style="color:var(--soft)">We pulled the numbers before our call, then re-checked every one this week. Each has its source next to it.</p>
+
+    <div class="mk-stats">
+      <div class="stat"><div class="n">+33%</div><p>US date sales in 2025, according to Joolies. Circana clocked about +30% over the year to July 2025.</p><div class="src"><a href="https://www.fox5ny.com/news/date-fruit-sales-u-s-skyrockets-shoppers-seek-healthier-foods">Fox 5 / Food52</a>, <a href="https://www.inc.com/danielle-wiener-bronner/dates-are-going-viral-farmers-are-leaning-in-heres-why/91241853">Inc.</a></div></div>
+      <div class="stat"><div class="n">$882M</div><p>The global market for date products like paste, syrup and powder in 2026. Forecast: $1.4B by 2035.</p><div class="src"><a href="https://www.gminsights.com/industry-analysis/date-product-market">Global Market Insights</a></div></div>
+      <div class="stat"><div class="n">1 in 10</div><p>Fewer than 1 in 10 US adults get enough fiber: 5% of men, 9% of women.</p><div class="src"><a href="https://nutrition.org/most-americans-are-not-getting-enough-fiber-in-our-diets/">American Society for Nutrition</a></div></div>
+      <div class="stat"><div class="n">63%</div><p>of Americans say they're concerned about how much sugar they eat.</p><div class="src"><a href="https://www.preparedfoods.com/articles/131235-ific-survey-shows-americans-remain-focused-on-sugar-intake">IFIC 2025 survey</a></div></div>
+    </div>
+
+    <div class="early">
+      <div class="dots" id="dots" role="img" aria-label="12 of 100 households buy dates"></div>
+      <div>
+        <h3 style="margin:0">It's still early.</h3>
+        <p>About 12 in every 100 US households bought dates in 2025. The other 88 haven't yet. The 2025 spike has settled into steadier growth: the category was up 9.9% this summer.</p>
+        <div class="src"><a href="https://www.nosh.com/pr/2026/09/02/joolies-enters-202627-season-with-50-more-fruit-amid-continued-retail-and-category-growth">Circana and SPINS, via Joolies</a></div>
+      </div>
+    </div>
+
+    <h3>The playbook you picked is real</h3>
+    <div class="steps">
+      <div><div class="when">2020</div><p>Blank Street starts as one cart in a Brooklyn diner's garden.</p></div>
+      <div><div class="when">2021</div><p>First real storefront opens.</p></div>
+      <div><div class="when">Aug 2026</div><p>106 stores. Raises $105M at a valuation of about $650M.</p></div>
+      <div><div class="when">Now</div><p>Los Angeles. Studio City is open, with Beverly Hills and West Hollywood planned.</p></div>
+    </div>
+    <p class="src" style="margin-top:6px">On our call we guessed their valuation at around $100M. It's about $650M. And before they opened a single LA store, they showed up with an invite-only pop-up at Coachella. Events first, same as your plan. <a href="https://www.restaurantji.com/blog/blank-street-coffee-lands-in-los-angeles-with-ice-cream-on-the-way/">Restaurantji</a>, <a href="https://www.nrn.com/emerging-chains/blank-street-coffee-makes-its-west-coast-debut-in-los-angeles">Nation's Restaurant News</a>, <a href="https://dailycoffeenews.com/2026/08/25/blank-street-raises-105-million-expands-to-la/">Daily Coffee News</a>, <a href="https://leb.business/en/article/beirut-to-brooklyn-blank-street-now-worth-650-million">LEB Business</a>, Los Angeles Times (April 2026).</p>
+
+    <h3>Who's on the shelf today</h3>
+    <div class="scroll"><table class="shelf stack">
+      <thead><tr><th>Brand</th><th>What they sell</th><th>What we found</th></tr></thead>
+      <tbody>
+        <tr><td>Gato Dates</td><td>Nut-butter stuffed, chocolate-dipped Medjools</td><td>$15.99 to $16.99 for a 3.79 oz pack at <a href="https://erewhon.com/product/8540151000/organic-almond-butter-dark-chocolate-covered-dates">Erewhon</a></td></tr>
+        <tr><td>Date Better</td><td>Chocolate-covered, stuffed Medjools</td><td>Listed at $18 on <a href="https://datebettersnacks.com/">their site</a></td></tr>
+        <tr><td>Erewhon's own</td><td>Date and nut bites</td><td>$6.50 for 3, $12 for 9 (<a href="https://ship.erewhon.com/collections/date-nut-bites">Erewhon</a>)</td></tr>
+        <tr><td>Joolies</td><td>Whole Medjools, date sours, date pops</td><td>No. 2 date brand in the US, in 12,000+ stores, up 28.9% (<a href="https://www.thepacker.com/news/hot-dates-joolies-drives-28-9-growth-claims-no-2-spot-nationwide">The Packer</a>)</td></tr>
+        <tr><td>Pop &amp; Bottle</td><td>Canned oat lattes sweetened with dates</td><td>In Target, Kroger, Walmart and Whole Foods, about $3 to $5 a can (<a href="https://www.target.com/p/-/A-92985363">Target</a>)</td></tr>
+        <tr><td>Bateel, Tulua</td><td>Date seed coffee</td><td>Tiny and new. One estimate puts it at about $92M worldwide in 2026 (<a href="https://www.intelmarketresearch.com/date-seed-coffee-alternative-market-51538">Intel Market Research</a>). <a href="https://bateel.com/en_us/date-seed-coffee.html">Bateel</a> is Dubai-based.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="gap"><b>The gap</b>Everyone we found is selling a snack in a bag. We didn't find anyone selling the date as an object you keep, or as a cafe. Paste in a paint tube, seed brew in a tin and a trailer are open space.</div>
+
+    <h3>What we'd do with it</h3>
+    <div class="moves">
+      <div><b>Lead with taste, back it with health</b><p>Taste drives 88% of food purchases, and in 2026 "low in sugar" slipped out of the top three things people call healthy. So the art and the flavor go first. The fiber and sugar facts close the sale.</p><div class="src"><a href="https://www.foodnavigator.com/Article/2026/07/14/ific-consumers-reprioritize-food-purchase-drivers/">FoodNavigator</a>, <a href="https://theshelbyreport.com/2026/07/17/survey-convenience-bigger-concern-than-health-for-u-s-shoppers/">Shelby Report</a></div></div>
+      <div><b>Tell the 1927 story, because it's true</b><p>In 1927 a USDA botanist shipped 11 Medjool offshoots from Morocco to the US. Every American Medjool descends from them, and close to 90% of US dates grow in the Coachella Valley. That's your Origin page.</p><div class="src"><a href="https://saveur.com/article/Kitchen/Valley-of-the-Dates">Saveur</a>, <a href="https://www.nationalgeographic.com/culture/food/the-plate/2015/06/18/dates-the-sticky-history-of-a-sweet-fruit/">National Geographic</a>, <a href="https://www.aramcoworld.com/articles/2024/americas-arabian-superfood">AramcoWorld</a></div></div>
+      <div><b>Show up where the crowd already is</b><p>Little Italy Mercato is San Diego County's largest weekly market: six blocks, every Saturday, and it takes vendor applications. In LA, Blank Street is planning a West Hollywood store, so that crowd is about to know this look.</p><div class="src"><a href="https://www.sandiego.org/events-festivals/little-italy-mercato-every-saturday/6a0c53bef36811f0b563">San Diego Tourism</a>, <a href="https://sandiegomarkets.squarespace.com/vendors">Mercato vendors</a></div></div>
+    </div>
+
+    <h3>Straight talk</h3>
+    <ul class="talk">
+      <li><b>Careful with "doesn't spike your blood sugar."</b> Studies put dates at a low to medium glycemic index: an average of 55 across 17 varieties, ranging from 43 to 75. Those studies didn't test Medjool. We'd say "low to medium GI" and leave it there. <span class="src"><a href="https://pubmed.ncbi.nlm.nih.gov/27920411/">Annals of Saudi Medicine</a>, <a href="https://link.springer.com/article/10.1186/1475-2891-10-59">Nutrition Journal</a></span></li>
+      <li><b>Market-size numbers disagree.</b> Research firms put the whole-date market anywhere from about $17B to $33B for 2025, and date seed coffee at $85M or $166M. We used the narrower "date products" figure because it's closest to what you're making. <span class="src"><a href="https://www.expertmarketresearch.com/reports/dates-market">Expert Market Research</a>, <a href="https://www.fox13seattle.com/news/date-fruit-sales-u-s-skyrockets-shoppers-seek-healthier-foods">Fortune Business Insights via Fox</a>, <a href="https://growthmarketreports.com/report/sustainable-date-seed-coffee-market">Growth Market Reports</a></span></li>
+      <li><b>The 33% figure comes from a date brand.</b> It lines up with Circana's independent number for roughly the same period, which is why we're comfortable showing it.</li>
+    </ul>
+
+    <details class="srcs"><summary>All sources</summary><ol>
+      <li><a href="https://www.fox5ny.com/news/date-fruit-sales-u-s-skyrockets-shoppers-seek-healthier-foods">Fox 5 NY: date sales up 33% in 2025 (June 2026)</a></li>
+      <li><a href="https://www.inc.com/danielle-wiener-bronner/dates-are-going-viral-farmers-are-leaning-in-heres-why/91241853">Inc.: Circana date sales data (2025)</a></li>
+      <li><a href="https://www.nosh.com/pr/2026/09/02/joolies-enters-202627-season-with-50-more-fruit-amid-continued-retail-and-category-growth">Joolies release: household penetration, category growth (Sept 2026)</a></li>
+      <li><a href="https://www.gminsights.com/industry-analysis/date-product-market">Global Market Insights: date product market (Aug 2026)</a></li>
+      <li><a href="https://nutrition.org/most-americans-are-not-getting-enough-fiber-in-our-diets/">American Society for Nutrition: fiber intake</a></li>
+      <li><a href="https://www.preparedfoods.com/articles/131235-ific-survey-shows-americans-remain-focused-on-sugar-intake">IFIC 2025: sugar concern</a></li>
+      <li><a href="https://www.foodnavigator.com/Article/2026/07/14/ific-consumers-reprioritize-food-purchase-drivers/">IFIC 2026: purchase drivers</a></li>
+      <li><a href="https://dailycoffeenews.com/2026/08/25/blank-street-raises-105-million-expands-to-la/">Daily Coffee News: Blank Street round and LA</a></li>
+      <li><a href="https://www.nrn.com/emerging-chains/blank-street-coffee-makes-its-west-coast-debut-in-los-angeles">Nation's Restaurant News: Blank Street history</a></li>
+      <li><a href="https://saveur.com/article/Kitchen/Valley-of-the-Dates">Saveur: the 1927 Medjool offshoots</a></li>
+      <li><a href="https://www.aramcoworld.com/articles/2024/americas-arabian-superfood">AramcoWorld: Coachella Valley share</a></li>
+      <li><a href="https://pubmed.ncbi.nlm.nih.gov/27920411/">Annals of Saudi Medicine: glycemic index of 17 date varieties</a></li>
+      <li><a href="https://www.thepacker.com/news/hot-dates-joolies-drives-28-9-growth-claims-no-2-spot-nationwide">The Packer: Joolies growth</a></li>
+      <li><a href="https://www.intelmarketresearch.com/date-seed-coffee-alternative-market-51538">Intel Market Research: date seed coffee</a></li>
+    </ol></details>
   </div>
 </section>
 
@@ -360,6 +464,7 @@ footer{font-size:13px;color:var(--soft)}
   };
   const ro=new ResizeObserver(draw);ro.observe(s);
 
+  {const dz=document.getElementById('dots');let h='';for(let i=0;i<100;i++)h+='<i'+(i<12?' class="on"':'')+'></i>';dz.innerHTML=h}
   const prop=document.getElementById('proposal'),site=document.getElementById('site'),nav=document.getElementById('s-nav'),hero=document.getElementById('s-hero');
   const show=v=>{const on=v==='site';site.hidden=!on;prop.hidden=on;window.scrollTo(0,0);onScroll()};
   const onScroll=()=>nav.classList.toggle('solid',window.scrollY>hero.offsetHeight-64);
